@@ -5,16 +5,16 @@ const int trigPinLeft2 = 11;
 const int echoPinLeft2 = 12;
 
 // Define pins for right sensors
-const int trigPinRight1 = 4;
-const int echoPinRight1 = 5;
-const int trigPinRight2 = 6;
-const int echoPinRight2 = 7;
+const int trigPinRight1 = 2;
+const int echoPinRight1 = 3;
+const int trigPinRight2 = 4; // Changed from 6 to avoid overlap
+const int echoPinRight2 = 5; // Changed from 7 to avoid overlap
 
 // Define pins for motors
-const int motorLeft1Pin = 3;
-const int motorLeft2Pin = 4;
-const int motorRight1Pin = 5;
-const int motorRight2Pin = 6;
+const int motorLeft1Pin = 6; // Changed from 2 to avoid overlap
+const int motorLeft2Pin = 7; // Changed from 3 to avoid overlap
+const int motorRight1Pin = 8; // Changed from 4 to avoid overlap
+const int motorRight2Pin = 13; // Changed from 5 to avoid overlap
 
 // Define vibration intensity limits
 const int minIntensity = 50; // Minimum vibration intensity
@@ -31,6 +31,10 @@ long durationRight1;
 float distance_cmRight1;
 long durationRight2;
 float distance_cmRight2;
+
+// Delay between scans/waves when an object is far
+int longDelay = 2000; // Long delay
+int shortDelay = 500; // Short delay
 
 void setup() {
   // Set up sensor pins
@@ -59,8 +63,11 @@ void loop() {
   // Control motors based on proximity readings
   controlMotors();
 
+  // Adjust delay between measurements based on distance readings
+  adjustDelay();
+
   // Delay for stability
-  delay(100); // Adjust as necessary
+  delay(longDelay); // Adjust as necessary
 }
 
 void measureDistances() {
@@ -105,6 +112,21 @@ void measureDistance(int trigPin, int echoPin, long &duration, float &distance_c
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-  duration = pulseIn(echoPin, HIGH);
-  distance_cm = duration * 0.0343 / 2;
+  duration = pulseIn(echoPin, HIGH, 30000); // Timeout after 30ms
+  if (duration == 0) {
+    // Handle timeout or other errors
+    distance_cm = -1; 
+  } else {
+    distance_cm = duration * 0.0343 / 2;
+  }
+}
+
+void adjustDelay() {
+  if (distance_cmLeft1 < 150 || distance_cmLeft2 < 150 || distance_cmRight1 < 150 || distance_cmRight2 < 150) {
+    // If any sensor detects an object within 1.5 meters, set a short delay
+    longDelay = shortDelay; 
+  } else {
+    // If no object is detected within 1.5 meters by any sensor, set a longer delay
+    longDelay = 2000; 
+  }
 }
