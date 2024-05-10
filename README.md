@@ -1,6 +1,4 @@
 # Smart-glasses
-Sure, here's a concise description of your project for your GitHub README:
-
 ---
 
 ## Obstacle Avoidance System for Robotics
