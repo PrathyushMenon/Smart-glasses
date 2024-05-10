@@ -39,16 +39,3 @@ The system consists of ultrasonic sensors mounted on the left and right sides, a
 
 - Adjust the `shortDelay` and `longDelay` variables in the code to change the delay periods for short and long distance readings respectively.
 - Modify the mapping of distance to vibration intensity in the `calculateIntensity` function to suit your application's requirements.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- This project was inspired by the need for an efficient and responsive motor control system based on real-time distance measurements.
-- Special thanks to the Arduino community for providing valuable resources and support.
-
----
-
-Feel free to further tailor this README according to your project's specific needs!
