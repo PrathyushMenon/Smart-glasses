@@ -1,18 +1,54 @@
-# Smart-glasses
----
+# Smart Glasses
 
-## Obstacle Avoidance System for Robotics
+This Arduino project utilizes ultrasonic sensors to control vibration motors based on proximity readings. The system adjusts the frequency of scans or waves dynamically depending on the distance of detected objects.
 
-This Arduino-based obstacle avoidance system enhances the navigation capabilities of robotics platforms by providing real-time obstacle detection and feedback mechanisms. The system utilizes ultrasonic sensors to detect nearby objects and controls vibration motors to provide feedback based on the proximity of detected obstacles.
+## Overview
 
-### Features:
-- **Comprehensive Coverage**: Multiple sensor pairs offer extensive coverage for obstacle detection from both the left and right sides.
-- **Customizable Parameters**: Adjustable vibration intensity limits allow for fine-tuning based on specific requirements and environmental conditions.
-- **Versatile Integration**: Designed for easy integration into various robotics projects, with straightforward control interfaces and flexible configuration options.
-- **Enhanced Safety**: Promotes safe and efficient operation in dynamic environments by alerting the robot to obstacles in its path.
-- **Open Source**: Available as open-source hardware and software, encouraging collaboration and further development within the robotics community.
+The system consists of ultrasonic sensors mounted on the left and right sides, and four motors for controlling movement. When an object is detected within a certain range (less than 1.5 meters), the frequency of scans or waves is increased, leading to more frequent adjustments in motor control. Conversely, when no objects are detected within the specified range, the frequency decreases, reducing the frequency of scans or waves and conserving energy.
+
+## Features
+
+- Utilizes ultrasonic sensors for distance measurement.
+- Dynamically adjusts the frequency of scans or waves based on object proximity.
+- Controls four motors to respond to detected objects.
+- Adjustable short and long delay periods for customization.
+
+## Setup and Configuration
+
+### Hardware Requirements:
+
+- Arduino board
+- Ultrasonic sensors (4)
+- Vibration Motors (4)
+- Connecting wires
+- Bread-board (if required)
+
+### Installation:
+
+1. Connect the ultrasonic sensors to the Arduino board according to the pin configurations defined in the code.
+2. Connect the motors to the Arduino board using appropriate motor driver if required.
+3. Upload the provided Arduino sketch to your Arduino board.
 
 ### Usage:
-1. **Setup**: Connect the ultrasonic sensors and vibration motors to the Arduino board as per the provided pin definitions.
-2. **Upload**: Upload the provided Arduino sketch to the board using the Arduino IDE.
-3. **Run**: Power up the system and observe the obstacle detection and feedback mechanism in action.
+
+1. Ensure all connections are properly made.
+2. Power on the Arduino board.
+3. The system will start measuring distances using the ultrasonic sensors and adjusting motor control accordingly.
+
+## Customization
+
+- Adjust the `shortDelay` and `longDelay` variables in the code to change the delay periods for short and long distance readings respectively.
+- Modify the mapping of distance to vibration intensity in the `calculateIntensity` function to suit your application's requirements.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- This project was inspired by the need for an efficient and responsive motor control system based on real-time distance measurements.
+- Special thanks to the Arduino community for providing valuable resources and support.
+
+---
+
+Feel free to further tailor this README according to your project's specific needs!
