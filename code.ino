@@ -7,14 +7,14 @@ const int echoPinLeft2 = 12;
 // Define pins for right sensors
 const int trigPinRight1 = 2;
 const int echoPinRight1 = 3;
-const int trigPinRight2 = 4; // Changed from 6 to avoid overlap
-const int echoPinRight2 = 5; // Changed from 7 to avoid overlap
+const int trigPinRight2 = 4; 
+const int echoPinRight2 = 5; 
 
 // Define pins for motors
-const int motorLeft1Pin = 6; // Changed from 2 to avoid overlap
-const int motorLeft2Pin = 7; // Changed from 3 to avoid overlap
-const int motorRight1Pin = 8; // Changed from 4 to avoid overlap
-const int motorRight2Pin = 13; // Changed from 5 to avoid overlap
+const int motorLeft1Pin = 6; 
+const int motorLeft2Pin = 7; 
+const int motorRight1Pin = 8; 
+const int motorRight2Pin = 13; 
 
 // Define vibration intensity limits
 const int minIntensity = 50; // Minimum vibration intensity
