@@ -1,4 +1,4 @@
-# Smart Glasses
+# Stereophonic object detection for blind
 
 This Arduino project utilizes ultrasonic sensors to control vibration motors based on proximity readings. The system adjusts the frequency of scans or waves dynamically depending on the distance of detected objects.
 
